@@ -6,6 +6,11 @@
     <title>Document</title>
 </head>
 <body>
+    <style>
+        .active {
+            background-color: red;
+        }
+    </style>
     <!-- 1 -->
     <!-- <h1 id="title">How to select a html element using getElementById method.</h1> -->
     
@@ -45,12 +50,29 @@
     </div> -->
 
     <!-- 6 -->
-    <h1 id="heading1">Welcome From DOM Basic Course</h1>
+    <!-- <h1 id="heading1">Welcome From DOM Basic Course</h1>
     
     <div class="header">
         <h1 id="heading2">Welcome From DOM Basic Course</h1>
         <p>Hello world</p>
-    </div>
+    </div> -->
+
+    <!-- Event Listeners -->
+    <!-- <button id="element">Click Me</button> -->
+
+    <!-- Dynamic Element Creation -->
+    <!-- <section style="background-color: red; width: 100px; height: 100px"></section> -->
+
+    
+    <!-- class add remove toggle -->
+    <!-- <button id="element">Click Me</button> -->
+
+    <!-- Practice Project -->
+    <form id="todo-form">
+        <input type="text" id="todo-input">
+        <button type="submit">Add</button>
+    </form>
+    <ul id="todo-list"></ul>
     <script>
         // 1 getElementById method
         // document
@@ -127,19 +149,65 @@
         // console.log(heading1);
         // console.log(heading1.parentElement);
 
-        let heading2=document.getElementById("heading2");
+        // let heading2=document.getElementById("heading2");
         // console.log(heading2.parentElement);
         // console.log(heading2.parentNode);
 
-        let header=document.getElementsByClassName("header")[0];
-        console.log(header.childNodes);
-        console.log(header.children);
+        // let header=document.getElementsByClassName("header")[0];
+        // console.log(header.childNodes);
+        // console.log(header.children);
 
-        console.log(header.nextSibling);
-        console.log(heading2.nextElementSibling);
+        // console.log(header.nextSibling);
+        // console.log(heading2.nextElementSibling);
 
-        console.log(header.previousSibling);
-        console.log(heading2.previousElementSibling); //null
+        // console.log(header.previousSibling);
+        // console.log(heading2.previousElementSibling); //null
+
+        // Event Listeners
+        // element.addEventListener('click',()=> {
+        //     console.log("Clicked!");
+        // });
+
+        // Dynamic Element Creation
+        // const newDiv=document.createElement('div');
+        // newDiv.className="new-element";
+        // newDiv.textContent='Hello World';
+        // document.body.appendChild(newDiv);
+
+        // const newDiv2=document.createElement('div');
+        // const section=document.querySelector('section');
+        // newDiv2.className="new-element2";
+        // newDiv2.textContent='Hello World2';
+        // section.appendChild(newDiv2);
+
+        // section.style.backgroundColor="green";
+        // section.style.padding="1rem";
+
+        // class add remove toggle
+        // var element=document.getElementById("element");
+        // element.addEventListener('click',()=> {    
+        //     //element.classList.add("active");
+        //     // element.classList.remove("active");
+        //     // element.classList.toggle("active");  
+        // })
+
+        // Practice Project
+        const todoForm=document.querySelector('#todo-form');
+        const todoInput=document.querySelector('#todo-input');
+        const todoList=document.querySelector('#todo-list');
+
+        todoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const todoText=todoInput.value.trim();
+            if(!todoText) return;
+
+            const todoItem=document.createElement('li');
+            todoItem.textContent=todoText;
+            todoList.appendChild(todoItem);
+
+            todoInput.value='';
+        })
     </script>
 </body>
 </html>
