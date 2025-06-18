@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;;
+        }
+        .todo-form {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .todo-form input {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .todo-form button {
+            padding: 10px;
+            font-size: 16px;
+            background: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .todo-list {
+            list-style: none;
+            padding: 0;
+        }
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background: #f9f9f9;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+        }
+        .todo-item.completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+        .todo-item button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .edit-btn {
+            background: #ffc107;
+            color: #fff;
+        }
+        .delete-btn {
+            background: #dc3545;
+            color: #fff;
+        }
+        .complete-btn {
+            background: #28a745;
+            color: #fff;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <div class="todo-form">
+            <input type="text" id="todo-input" placeholder="Add a new task..." />
+            <button id="add-btn">Add</button>
+        </div>
+        <ul class="todo-list" id="todo-list">
+        </ul>
+    </div>
+
+    <script>
+        let todos = [];
+        let todoInput = document.getElementById('todo-input');
+        let todoAddButton = document.getElementById('add-btn');
+        let todoList = document.getElementById('todo-list');
+        todoAddButton.addEventListener("click", function() {
+            let todo = {
+                text: todoInput.value,
+                completed: false
+            };
+            if (todo.text.trim()) {
+                todos.push(todo);
+                todoInput.value = '';
+                renderTodos();
+            }
+            
+            function renderTodos() {
+                todoList.innerHTML = '';
+                for(let i=0; i<todos.length; i++) {
+                    let liElement = document.createElement("li");
+                    liElement.className = 'todo-item';
+
+                    if(todos[i].completed) {
+                        liElement.classList.add('completed');
+                    }
+
+                    let spanElement = document.createElement("span");
+                    spanElement.innerText = todos[i].text;
+                    let divElement = document.createElement("div");
+                    let completeButton = document.createElement("button");
+                    completeButton.className = 'complete-btn';
+                    completeButton.innerText = todos[i].completed ? 'Uncomplete' : 'Complete';
+
+                    completeButton.addEventListener("click", function() {
+                        todos[i].completed = !todos[i].completed;
+                        renderTodos();
+                    });
+
+                    let editButton = document.createElement("button");
+                    editButton.className = 'edit-btn';
+                    editButton.innerText = 'Edit';
+
+                    editButton.addEventListener("click", function() {
+                        let newText = prompt("Enter the new text:", todos[i].text);
+                        if(newText.trim()) {
+                            todos[i].text = newText;
+                            renderTodos();
+                        }
+                    });
+
+                    let deleteButton = document.createElement("button");
+                    deleteButton.className = 'delete-btn';
+                    deleteButton.innerText = 'Delete';
+
+                    deleteButton.addEventListener("click", function() {
+                        todos.splice(i, 1);
+                        renderTodos();
+                    })
+
+                    divElement.appendChild(completeButton);
+                    divElement.appendChild(editButton);
+                    divElement.appendChild(deleteButton);
+                    liElement.appendChild(spanElement);
+                    liElement.appendChild(divElement);
+                    todoList.appendChild(liElement);
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

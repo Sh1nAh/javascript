@@ -53,26 +53,39 @@
     <!-- <h1 id="heading1">Welcome From DOM Basic Course</h1>
     
     <div class="header">
+        <p>Hello</p>
         <h1 id="heading2">Welcome From DOM Basic Course</h1>
         <p>Hello world</p>
     </div> -->
 
     <!-- Event Listeners -->
     <!-- <button id="element">Click Me</button> -->
+    <!-- <h1 id="heading">Welcome From DOM Basic Course</h1> -->
+
+    <!-- creating html elements -->
+    <!-- <h1 id="heading" class="heading header">Welcome From DOM Basic Course</h1> -->
+
+    <!-- add html element to dom -->
+    <div class="header">
+        <button id="button">Click</button>
+        <ul id="myList">
+            <li>Tea</li>
+            <li>Coffee</li>
+        </ul>
+    </div>
 
     <!-- Dynamic Element Creation -->
     <!-- <section style="background-color: red; width: 100px; height: 100px"></section> -->
 
-    
     <!-- class add remove toggle -->
     <!-- <button id="element">Click Me</button> -->
 
     <!-- Practice Project -->
-    <form id="todo-form">
+    <!-- <form id="todo-form">
         <input type="text" id="todo-input">
         <button type="submit">Add</button>
     </form>
-    <ul id="todo-list"></ul>
+    <ul id="todo-list"></ul> -->
     <script>
         // 1 getElementById method
         // document
@@ -120,7 +133,7 @@
         // title.textContent=title.textContent+" new";
         // title.textContent+= " new";
 
-        // let List=document.getElementById("list");
+        // let list=document.getElementById("list");
         // console.log(list.innerHTML);
 
         // list.innerHTML="<p>This is new list</p>";
@@ -168,6 +181,38 @@
         //     console.log("Clicked!");
         // });
 
+        // heading.addEventListener('click', function(event) {
+        //     console.log(event);
+        //     heading.style.color="red";
+        // })
+
+        //creating html elements
+        // let pTag = document.createElement('p');
+        // pTag.innerText = "ShinAh";
+        // pTag.className="para";
+        // pTag.id="para";
+        // console.log(pTag);
+
+        // heading.className="h1";
+        // console.log(heading);
+
+        // heading.classList.add("h1");
+        // heading.classList.remove("heading");
+        // console.log(heading);
+
+        // add html element to dom
+        // const button=document.getElementById("button");
+        // const myList=document.getElementById("myList");
+        // button.addEventListener('click', function() {
+        //     let liElement=document.createElement('li');
+        //     liElement.innerText="Water";
+        //     // myList.insertBefore(liElement,null);
+            
+        //     // myList.appendChild(liElement);
+
+        //     myList.insertAdjacentElement('beforeend',liElement);
+        // })
+
         // Dynamic Element Creation
         // const newDiv=document.createElement('div');
         // newDiv.className="new-element";
@@ -186,28 +231,28 @@
         // class add remove toggle
         // var element=document.getElementById("element");
         // element.addEventListener('click',()=> {    
-        //     //element.classList.add("active");
+        //     // element.classList.add("active");
         //     // element.classList.remove("active");
-        //     // element.classList.toggle("active");  
+        //      element.classList.toggle("active");  
         // })
 
         // Practice Project
-        const todoForm=document.querySelector('#todo-form');
-        const todoInput=document.querySelector('#todo-input');
-        const todoList=document.querySelector('#todo-list');
+        // const todoForm=document.querySelector('#todo-form');
+        // const todoInput=document.querySelector('#todo-input');
+        // const todoList=document.querySelector('#todo-list');
 
-        todoForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+        // todoForm.addEventListener('submit', (e) => {
+        //     e.preventDefault();
 
-            const todoText=todoInput.value.trim();
-            if(!todoText) return;
+        //     const todoText=todoInput.value.trim();
+        //     if(!todoText) return;
 
-            const todoItem=document.createElement('li');
-            todoItem.textContent=todoText;
-            todoList.appendChild(todoItem);
+        //     const todoItem=document.createElement('li');
+        //     todoItem.textContent=todoText;
+        //     todoList.appendChild(todoItem);
 
-            todoInput.value='';
-        })
+        //     todoInput.value='';
+        // })
     </script>
 </body>
 </html>
